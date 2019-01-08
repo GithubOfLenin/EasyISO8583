@@ -81,7 +81,7 @@ int EA_Set_One_Field_Def_PBOC(int iFieldID, int iFieldType, int iFieldLen, int i
         return EA_PARAMETER_ERR;
     }
 
-    if ((iFieldType < EA_FORMAT_BIN) || (iFieldID > EA_FORMAT_ASC))
+    if ((iFieldType < EA_FORMAT_BIN) || (iFieldType > EA_FORMAT_ASC))
     {
         return EA_PARAMETER_ERR;
     }
