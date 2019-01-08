@@ -686,15 +686,21 @@ int EA_Get_Field_Auto(ea_parser_t *pstParser, int iFieldID, char *pbData, int *p
 				goto end_err;
 			}
 
-			if ((iValLen*2 == (iFatLen+1)) &&
-				(EA_FORMAT_CNBCD == pstParser->fieldsDef[iFieldID].dataType))
-			{
-				memcpy(pbData, pbBuff+1, iFatLen);
-			}
-			else
-			{
-				memcpy(pbData, pbBuff, iFatLen);
-			}
+            if (iValLen*2 == (iFatLen+1))
+            {
+                if (EA_FORMAT_CNBCD == pstParser->fieldsDef[iFieldID].dataType)
+                {
+                    memcpy(pbData, pbBuff, iFatLen);
+                }
+                else
+                {
+                    memcpy(pbData, pbBuff+1, iFatLen);
+                }
+            }
+            else
+            {
+                memcpy(pbData, pbBuff, iFatLen);
+            }
 			
 		}
 		else
